@@ -1,6 +1,6 @@
-# FreeMine
+# FreeMind
 
-FreeMine.
+FreeMind.
 
 Built with [A-Frame](https://aframe.io).
 
