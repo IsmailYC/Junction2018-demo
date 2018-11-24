@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>FreeMine</title>
+    <meta name="description" content="FreeMind">
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <a-asset-item id="woman" src="./doctor/scene.gltf"></a-asset-item>
+        <a-asset-item id="spider" src="./spider_animated/scene.gltf"></a-asset-item>
+        <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg" crossorigin="anonymous">
+        <img id="skyTexture" src="./room.jpg" crossorigin="anonymous">
+      </a-assets>
+
+      <!-- Primitives. -->
+
+      <!-- Background sky. -->
+      <a-sky src="#skyTexture"></a-sky>
+
+      <a-entity
+        gltf-model="#woman"
+        position="-7 9 -4"
+        scale="3 3 3"></a-entity>
+
+      <a-text 
+        position="0.5 2 -4"
+        align="left" anchor="left" width="5"
+        value="Do you have trouble falling
+               or staying asleep,
+               or sleeping too much?"
+        color="#006400"
+        font="aileronsemibold"></a-text>
+
+      <a-text 
+        position="10 2 -4"
+        depth="1"
+        rotation="0 -90 0"
+        align="left" anchor="left" width="20"
+        value="Let's treat phobia by
+               exposing yourself to fear"
+        color="#006400"
+        width="0.01"
+        font="aileronsemibold"></a-text>
+
+      <a-entity
+        gltf-model="#spider"
+        position="30 -10 5"
+        animation-mixer></a-entity>
+
+
+      <a-camera>
+        <a-cursor
+          intersection-spawn="event: click; mixin: voxel"
+        ></a-cursor>
+      </a-camera>
+
+    </a-scene>
+  </body>
+</html>
