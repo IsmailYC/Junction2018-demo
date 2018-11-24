@@ -16,23 +16,33 @@
       </a-assets>
 
       <!-- Primitives. -->
+      <a-box id="start"
+             position="0 1.5 -1"
+             depth="0"
+             height="0.5"
+             scale="0.4 0.4 0.4"
+             text="value: start session"
+             color="#4CC3D9">
 
+             </a-box>
       <!-- Background sky. -->
       <a-sky src="#skyTexture"></a-sky>
 
+
       <a-entity
+        id="doctor"
         gltf-model="#woman"
         position="-7 9 -4"
-        scale="3 3 3"></a-entity>
-
-      <a-text 
-        position="0.5 2 -4"
-        align="left" anchor="left" width="5"
-        value="Do you have trouble falling
-               or staying asleep,
-               or sleeping too much?"
-        color="#006400"
-        font="aileronsemibold"></a-text>
+        scale="3 3 3"
+        visible="false"
+      >
+        <a-animation
+          attribute="visible"
+          begin="fade-in"
+          duration="1000"
+          to="true">
+        </a-animation>
+      </a-entity>
 
       <a-text 
         position="10 2 -4"
@@ -59,4 +69,15 @@
 
     </a-scene>
   </body>
+  <script>
+    var startButton = document.querySelector('#start');
+    function startSession(event) {
+      event.preventDefault();
+      console.log('here');
+      document.querySelector('#doctor').emit('fade-in');
+      startButton.removeEventListener('click', startSession);
+    }
+
+    startButton.addEventListener('click', startSession);
+  </script>
 </html>
